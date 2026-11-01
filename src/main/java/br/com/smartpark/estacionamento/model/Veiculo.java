@@ -1,11 +1,11 @@
 package br.com.smartpark.estacionamento.model;
 
+import br.com.smartpark.estacionamento.enums.TipoVeiculo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -39,7 +39,6 @@ public class Veiculo {
     @Column(name = "ativo", nullable = false)
     private Boolean ativo;
 
-    @CreationTimestamp
     @Column(name = "dataCadastro", nullable = false, updatable = false) //uma vez que essa data seja inserida no insert, essa data hora não pode ser alterada pela aplicação
     private LocalDateTime dataCadastro;
 
@@ -47,16 +46,17 @@ public class Veiculo {
     private LocalDateTime dataAtualizacao;
 
     @PrePersist // Roda antes do INSERT
-    private void aoCadastrar(){
+    private void aoCadastrar() {
         dataCadastro = LocalDateTime.now(); // Antes do insert, automaticamente o java vai pegar a data e hora e setar automaticamente
+        if (ativo == null) {
+            ativo = true; // Todo veículo nasce ativo
+        }
     }
 
     @PreUpdate // Roda antes do UPDATE
-    private void aoAtualizar(){
+    private void aoAtualizar() {
         dataAtualizacao = LocalDateTime.now();
     }
 
     //quando vier comando update se o cara da aplicação tentar burlar, a classe vai pegar o data e hora de agora e setar na data de atualização
-
-    //PAROU NA PÁG 17
 }
