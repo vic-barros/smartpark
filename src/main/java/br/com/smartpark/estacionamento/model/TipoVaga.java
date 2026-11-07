@@ -47,8 +47,8 @@ public class TipoVaga {
         }
 
         if(exigeCredencial == null){
-            exigeCredencial = true;
-        }
+            exigeCredencial = false;
+    }
     }
 
     @PreUpdate // Roda antes do UPDATE

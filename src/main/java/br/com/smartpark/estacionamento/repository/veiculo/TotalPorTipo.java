@@ -1,4 +1,4 @@
-package br.com.smartpark.estacionamento.repository;
+package br.com.smartpark.estacionamento.repository.veiculo;
 
 import br.com.smartpark.estacionamento.enums.TipoVeiculo;
 

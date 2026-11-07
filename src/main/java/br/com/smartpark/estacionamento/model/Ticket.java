@@ -40,7 +40,7 @@ public class Ticket {
                     "fk_ticket_tarifa"))
     private Tarifa tarifa;
 
-    @Column(name = "qrCodeToken", nullable = false, unique = true)
+    @Column(name = "qrCodeToken", nullable = false, updatable = false, unique = true)
     private UUID qrCodeToken; // Token vai dentro do QrCode, se for Integer (1,2,...), qualquer um poderia advinhar
 
     @Column(name = "ativo", nullable = false)

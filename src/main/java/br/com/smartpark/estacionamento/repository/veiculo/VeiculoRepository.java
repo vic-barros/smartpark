@@ -1,4 +1,4 @@
-package br.com.smartpark.estacionamento.repository;
+package br.com.smartpark.estacionamento.repository.veiculo;
 
 import br.com.smartpark.estacionamento.model.Veiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +19,6 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Integer> {
 
     // Se cogitou o resultado ser mais de um veículo o tipo é List
     List<Veiculo> findByVeiculoIdAndAtivoTrue(Integer veiculoId);
-
 
 
 }

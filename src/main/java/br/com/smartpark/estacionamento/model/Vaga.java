@@ -22,7 +22,7 @@ public class Vaga {
     private Integer vagaId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipVagaID", nullable = false,
+    @JoinColumn(name = "tipoVagaID", nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_vaga_tipo_vaga"))
     private TipoVaga tipoVaga;
 
