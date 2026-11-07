@@ -17,9 +17,9 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Integer> {
     // Busca pela placa, usa o optional para não dar nullpointer caso seja nula a placa
     Optional<Veiculo> findByPlaca(String placa);
 
-    // Se cogitou o resuktado ser mais de um veículo o tipo é List
+    // Se cogitou o resultado ser mais de um veículo o tipo é List
     List<Veiculo> findByVeiculoIdAndAtivoTrue(Integer veiculoId);
 
-   // traga todos veículos que estão ativos ordenados pe modelo
+
 
 }

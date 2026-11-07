@@ -58,5 +58,4 @@ public class Veiculo {
         dataAtualizacao = LocalDateTime.now();
     }
 
-    //quando vier comando update se o cara da aplicação tentar burlar, a classe vai pegar o data e hora de agora e setar na data de atualização
 }
