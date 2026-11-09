@@ -10,7 +10,7 @@ import java.util.List;
 public interface TipoVagaRepository extends JpaRepository<TipoVaga, Integer> {
 
     // Vai retornar um booleano se existir vaga com o mesmo nome
-    Boolean existsByNomeIgnoreCase(String nome);
+    boolean existsByNomeIgnoreCase(String nome);
 
     // Lista os tipos de vagas ativos em ordem crescente pelo nome
     List<TipoVaga> findByAtivoTrueOrderByNomeAsc();

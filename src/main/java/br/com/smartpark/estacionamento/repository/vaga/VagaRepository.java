@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface VagaRepository extends JpaRepository<Vaga, Integer> {
 
     // Busca se existe o código requisitado
-    Boolean existsByCodigo(String codigo);
+    boolean existsByCodigo(String codigo);
 
     // Busca pelo codigo unico
     Optional<Vaga> findByCodigo(String codigo);
@@ -30,8 +30,7 @@ public interface VagaRepository extends JpaRepository<Vaga, Integer> {
 
     @Query("""
             SELECT v FROM Vaga v
-            WHERE v.ativo = true
-                AND EXISTS (
+            WHERE EXISTS (
                     SELECT t FROM Ticket t
                     WHERE t.vaga = v AND t.dataHoraSaida IS NULL
               )

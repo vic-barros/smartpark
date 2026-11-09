@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface VeiculoRepository extends JpaRepository<Veiculo, Integer> {
 
     // Pergunta se já existe essa placa no banco (veículo já está cadastrado?)
-    Boolean existsByPlaca(String placa);
+    boolean existsByPlaca(String placa);
 
     // Busca pela placa, usa o optional para não dar nullpointer caso seja nula a placa
     Optional<Veiculo> findByPlaca(String placa);
