@@ -48,7 +48,7 @@ public class Vaga {
     private void aoCadastrar() {
         dataCadastro = LocalDateTime.now();
         if (ativo == null) {
-            ativo = true; // Todo veículo nasce ativo
+            ativo = true;
         }
 
         if (bloqueada == null) {
