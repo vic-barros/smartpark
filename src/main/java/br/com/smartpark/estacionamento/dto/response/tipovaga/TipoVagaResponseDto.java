@@ -10,8 +10,7 @@ public record TipoVagaResponseDto(
         String descricao,
         Boolean exigeCredencial,
         Boolean ativo,
-        LocalDateTime dataCadastro,
-        LocalDateTime dataAtualizacao
+        LocalDateTime dataCadastro
 ) {
 
     public static TipoVagaResponseDto de(TipoVaga tipoVaga) {
@@ -21,8 +20,7 @@ public record TipoVagaResponseDto(
                 tipoVaga.getDescricao(),
                 tipoVaga.getExigeCredencial(),
                 tipoVaga.getAtivo(),
-                tipoVaga.getDataCadastro(),
-                tipoVaga.getDataAtualizacao()
+                tipoVaga.getDataCadastro()
         );
     }
 }

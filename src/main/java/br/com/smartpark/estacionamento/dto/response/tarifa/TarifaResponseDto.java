@@ -11,7 +11,7 @@ public record TarifaResponseDto(
         BigDecimal valorPrimeiraHora,
         BigDecimal valorHoraAdicional,
         Short toleranciaMinutos,
-        boolean ativo,
+        Boolean ativo,
         LocalDateTime dataCadastro
 ) {
 

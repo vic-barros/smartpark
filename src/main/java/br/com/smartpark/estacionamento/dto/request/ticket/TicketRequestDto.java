@@ -10,23 +10,25 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public record TicketRequestDto(
-        @NotNull(message = "O veículo deve ser informado")
-        Veiculo veiculoId,
+
+        @NotBlank(message = "A placa do veículo é obrigatória ")
+        String placa,
 
         @NotNull(message = "A vaga deve ser informada")
-        Vaga vagaId,
-
-        @NotNull(message = "A tarifa deve ser informada")
-        Tarifa tarifaId
-
-
+        Integer vagaId
 ) {
 
-    public Ticket paraModel() {
+    public TicketRequestDto {
+        if (placa != null) {
+            placa = placa.trim().toUpperCase().replace("-", "");
+        }
+    }
+
+    public Ticket paraModel(Veiculo veiculo, Vaga vaga, Tarifa tarifa) {
         Ticket ticket = new Ticket();
-        ticket.setVeiculo(veiculoId);
-        ticket.setVaga(vagaId);
-        ticket.setTarifa(tarifaId);
+        ticket.setVeiculo(veiculo);
+        ticket.setVaga(vaga);
+        ticket.setTarifa(tarifa);
         return ticket;
     }
 }

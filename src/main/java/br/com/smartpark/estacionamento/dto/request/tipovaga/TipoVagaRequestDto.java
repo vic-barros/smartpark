@@ -2,6 +2,7 @@ package br.com.smartpark.estacionamento.dto.request.tipovaga;
 
 import br.com.smartpark.estacionamento.model.TipoVaga;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record TipoVagaRequestDto(
@@ -14,8 +15,8 @@ public record TipoVagaRequestDto(
         @Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
         String descricao,
 
-        @NotBlank(message = "É obrigatório informar se exige credencial para utilizar determinado tipo de vaga")
-        boolean exigeCredencial
+        @NotNull(message = "É obrigatório informar se exige credencial para utilizar determinado tipo de vaga")
+        Boolean exigeCredencial
 
 ) {
 

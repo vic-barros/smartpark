@@ -12,7 +12,7 @@ public record VagaResponseDto(
         String tipoVaga,
         Boolean exigeCredencial,
         Boolean bloqueada,
-        String motioBloqueio,
+        String motivoBloqueio,
         LocalDateTime dataCadastro
 ) {
 

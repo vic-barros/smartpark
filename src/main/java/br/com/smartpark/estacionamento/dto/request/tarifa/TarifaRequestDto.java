@@ -12,16 +12,16 @@ public record TarifaRequestDto(
         String descricao,
 
         @NotNull(message = "O valor da primeira hora deve ser informado")
-        @PositiveOrZero
-        @Digits(integer = 8, fraction = 2)
+        @PositiveOrZero(message = "O valor da primeira hora não pode ser negativo")
+        @Digits(integer = 8, fraction = 2, message = "O valor deve ter no máximo 2 casas decimais")
         BigDecimal valorPrimeiraHora,
 
         @NotNull(message = "O valor da hora adicional deve ser informado")
-        @PositiveOrZero
-        @Digits(integer = 8, fraction = 2)
+        @PositiveOrZero(message = "O calor da hora adicional não pode ser negativo")
+        @Digits(integer = 8, fraction = 2, message = "O valor deve ter no máximo 2 casas decimais")
         BigDecimal valorHoraAdicional,
 
-        @Min(0)
+        @Min(value = 0, message = "A tolerância não pode ser negativa")
         Short toleranciaMinutos
 ) {
 
