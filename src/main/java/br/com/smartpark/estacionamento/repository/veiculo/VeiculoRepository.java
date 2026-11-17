@@ -21,23 +21,23 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Integer> {
     // Busca pela placa, usa o optional para não dar nullpointer caso seja nula a placa
     Optional<Veiculo> findByPlaca(String placa);
 
-    Optional<Veiculo> findByVeiculoIDAndAtivoTrue(Integer veiculoID);
+    Optional<Veiculo> findByVeiculoIdAndAtivoTrue(Integer veiculoId);
 
-    List<Veiculo> findByTipoAndAtivoTrueOrderByModeloAsc(TipoVeiculo tipo);
+    List<Veiculo> findByTipoVeiculoAndAtivoTrueOrderByModeloAsc(TipoVeiculo tipoVeiculo);
 
     List<Veiculo> findByModeloContainingIgnoreCase(String trecho);
 
     @Query("""
-            SELECT v.tipo AS tipo, COUNT(v) AS total
-              FROM VeiculoModel v
+            SELECT v.tipoVeiculo AS tipo, COUNT(v) AS total
+              FROM Veiculo v
              WHERE v.ativo = true
-             GROUP BY v.tipo
+             GROUP BY v.tipoVeiculo
             """)
     List<TotalPorTipo> totalPorTipo();
 
     @Query(value = """
             SELECT TOP 5 * FROM Veiculo
-             WHERE ativo = 1
+             WHERE ativo = true
              ORDER BY dataCadastro DESC
             """, nativeQuery = true)
     List<Veiculo> ultimosCadastrados();

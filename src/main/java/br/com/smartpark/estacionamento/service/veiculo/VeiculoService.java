@@ -54,7 +54,7 @@ public class VeiculoService {
     }
 
     private Veiculo buscarAtivo(Integer id) {
-        return veiculoRepository.findByVeiculoIDAndAtivoTrue(id)
+        return veiculoRepository.findByVeiculoIdAndAtivoTrue(id)
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Veículo " + id + " não encontrado."));
     }
