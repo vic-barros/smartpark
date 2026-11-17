@@ -1,7 +1,11 @@
 package br.com.smartpark.estacionamento.repository.veiculo;
 
+import br.com.smartpark.estacionamento.enums.TipoVeiculo;
 import br.com.smartpark.estacionamento.model.Veiculo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,8 +21,28 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Integer> {
     // Busca pela placa, usa o optional para não dar nullpointer caso seja nula a placa
     Optional<Veiculo> findByPlaca(String placa);
 
-    // Se cogitou o resultado ser mais de um veículo o tipo é List
-    List<Veiculo> findByVeiculoIdAndAtivoTrue(Integer veiculoId);
+    Optional<Veiculo> findByVeiculoIDAndAtivoTrue(Integer veiculoID);
+
+    List<Veiculo> findByTipoAndAtivoTrueOrderByModeloAsc(TipoVeiculo tipo);
+
+    List<Veiculo> findByModeloContainingIgnoreCase(String trecho);
+
+    @Query("""
+            SELECT v.tipo AS tipo, COUNT(v) AS total
+              FROM VeiculoModel v
+             WHERE v.ativo = true
+             GROUP BY v.tipo
+            """)
+    List<TotalPorTipo> totalPorTipo();
+
+    @Query(value = """
+            SELECT TOP 5 * FROM Veiculo
+             WHERE ativo = 1
+             ORDER BY dataCadastro DESC
+            """, nativeQuery = true)
+    List<Veiculo> ultimosCadastrados();
+
+    Page<Veiculo> findByAtivoTrue(Pageable pageable);
 
 
 }
