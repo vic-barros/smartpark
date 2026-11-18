@@ -1,4 +1,4 @@
-package br.com.smartpark.estacionamento.service;
+package br.com.smartpark.estacionamento.service.tarifa;
 
 import br.com.smartpark.estacionamento.dto.request.tarifa.TarifaRequestDto;
 import br.com.smartpark.estacionamento.dto.response.tarifa.TarifaResponseDto;
