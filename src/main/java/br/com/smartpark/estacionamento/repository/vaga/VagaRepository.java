@@ -17,6 +17,9 @@ public interface VagaRepository extends JpaRepository<Vaga, Integer> {
     // Busca pelo codigo unico
     Optional<Vaga> findByCodigo(String codigo);
 
+    // Lista as vagas ativas em ordem de código
+    List<Vaga> findByAtivoTrueOrderByCodigoAsc();
+
     @Query("""
             SELECT v FROM Vaga v
             WHERE v.ativo = true
