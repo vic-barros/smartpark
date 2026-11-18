@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TipoVagaService {
@@ -49,6 +51,14 @@ public class TipoVagaService {
     public void inativar(Integer id) {
         TipoVaga tipoVaga = buscarAtivo(id);
         tipoVaga.setAtivo(false);
+    }
+
+    @Transactional(readOnly = true)
+    public List<TipoVagaResponseDto> listar() {
+        return tipoVagaRepository.findByAtivoTrueOrderByNomeAsc()
+                .stream()
+                .map(TipoVagaResponseDto::de)
+                .toList();
     }
 
 
