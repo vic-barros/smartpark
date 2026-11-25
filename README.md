@@ -278,7 +278,7 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 
 ---
 
-## 🚧 Andamento
+## Conclusão
 
 - [x] Entidades JPA (Veículo, Tipo de Vaga, Vaga, Tarifa, Ticket, Pagamento)
 - [x] Repositories com consultas derivadas e JPQL
@@ -287,7 +287,13 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 - [x] Services com as regras de negócio
 - [x] Controllers de Veículo, Tipo de Vaga e Vaga
 - [x] Controllers de Tarifa, Ticket e Pagamento
-- [ ] Geração da imagem do QR Code
+
+---
+
+## 🔮 Melhorias futuras
+
+- Geração da imagem do QR Code a partir do token do ticket
+- Forma de pagamento (PIX, cartão, dinheiro)
 
 ---
 
