@@ -16,7 +16,8 @@
 
 ## 📚 Sobre o projeto
 
-Projeto prático da disciplina **Programação I** do **Instituto Federal de Sergipe (IFS)**, ministrada pelo **Prof. Glauco Carvalho** (60h/aula).
+Projeto prático da disciplina **Programação I** do **Instituto Federal de Sergipe (IFS)**, ministrada pelo **Prof.
+Glauco Carvalho** (60h/aula).
 
 O objetivo é construir, por partes, uma API REST com fluxo completo de negócio:
 
@@ -28,16 +29,16 @@ Entrada do veículo → Ticket com QR Code → Cálculo da permanência → Paga
 
 ## 🛠️ Tecnologias
 
-| Tecnologia | Uso no projeto |
-|---|---|
-| **Java 21** | linguagem, com `record` nos DTOs |
-| **Spring Boot 4.1.1** | base da aplicação (Web MVC) |
-| **Spring Data JPA / Hibernate** | mapeamento das entidades e consultas |
-| **H2 Database** | banco de dados em memória |
-| **Bean Validation** | validação dos dados de entrada (`@NotBlank`, `@Pattern`…) |
-| **Lombok** | geração de getters, setters e construtores |
-| **springdoc-openapi 3.2.0** | documentação e testes pelo Swagger |
-| **Maven** | gerenciamento de dependências e build |
+| Tecnologia                      | Uso no projeto                                            |
+|---------------------------------|-----------------------------------------------------------|
+| **Java 21**                     | linguagem, com `record` nos DTOs                          |
+| **Spring Boot 4.1.1**           | base da aplicação (Web MVC)                               |
+| **Spring Data JPA / Hibernate** | mapeamento das entidades e consultas                      |
+| **H2 Database**                 | banco de dados em memória                                 |
+| **Bean Validation**             | validação dos dados de entrada (`@NotBlank`, `@Pattern`…) |
+| **Lombok**                      | geração de getters, setters e construtores                |
+| **springdoc-openapi 3.2.0**     | documentação e testes pelo Swagger                        |
+| **Maven**                       | gerenciamento de dependências e build                     |
 
 ---
 
@@ -148,10 +149,10 @@ No Windows, use `mvnw.cmd spring-boot:run`.
 
 A aplicação sobe em `http://localhost:8080`.
 
-| Recurso | Endereço |
-|---|---|
+| Recurso                             | Endereço                              |
+|-------------------------------------|---------------------------------------|
 | **Swagger** (documentação e testes) | http://localhost:8080/swagger-ui.html |
-| **Console do H2** | http://localhost:8080/h2 |
+| **Console do H2**                   | http://localhost:8080/h2              |
 
 Para acessar o console do H2, use:
 
@@ -167,46 +168,56 @@ Para acessar o console do H2, use:
 
 ### Veículos — `/veiculos`
 
-| Método | Caminho | Descrição |
-|---|---|---|
-| `GET` | `/veiculos` | lista os veículos ativos (paginado: `page`, `size`, `sort`) |
-| `GET` | `/veiculos/{id}` | busca um veículo |
-| `POST` | `/veiculos` | cadastra um veículo |
-| `PUT` | `/veiculos/{id}` | atualiza modelo, cor e tipo |
-| `DELETE` | `/veiculos/{id}` | inativa um veículo |
+| Método   | Caminho          | Descrição                                                   |
+|----------|------------------|-------------------------------------------------------------|
+| `GET`    | `/veiculos`      | lista os veículos ativos (paginado: `page`, `size`, `sort`) |
+| `GET`    | `/veiculos/{id}` | busca um veículo                                            |
+| `POST`   | `/veiculos`      | cadastra um veículo                                         |
+| `PUT`    | `/veiculos/{id}` | atualiza modelo, cor e tipo                                 |
+| `DELETE` | `/veiculos/{id}` | inativa um veículo                                          |
 
 ### Tipos de vaga — `/tipos-vaga`
 
-| Método | Caminho | Descrição |
-|---|---|---|
-| `GET` | `/tipos-vaga` | lista os tipos ativos |
-| `GET` | `/tipos-vaga/{id}` | busca um tipo |
-| `POST` | `/tipos-vaga` | cadastra um tipo |
-| `PUT` | `/tipos-vaga/{id}` | atualiza um tipo |
-| `DELETE` | `/tipos-vaga/{id}` | inativa um tipo |
+| Método   | Caminho            | Descrição             |
+|----------|--------------------|-----------------------|
+| `GET`    | `/tipos-vaga`      | lista os tipos ativos |
+| `GET`    | `/tipos-vaga/{id}` | busca um tipo         |
+| `POST`   | `/tipos-vaga`      | cadastra um tipo      |
+| `PUT`    | `/tipos-vaga/{id}` | atualiza um tipo      |
+| `DELETE` | `/tipos-vaga/{id}` | inativa um tipo       |
 
 ### Vagas — `/vagas`
 
-| Método | Caminho | Descrição |
-|---|---|---|
-| `GET` | `/vagas` | lista as vagas ativas |
-| `GET` | `/vagas/livres` | lista as vagas livres |
-| `GET` | `/vagas/ocupadas` | lista as vagas ocupadas |
-| `GET` | `/vagas/{id}` | busca uma vaga |
-| `POST` | `/vagas` | cadastra uma vaga |
-| `PUT` | `/vagas/{id}` | atualiza código e tipo |
-| `PATCH` | `/vagas/{id}/bloqueio` | bloqueia a vaga (exige motivo) |
-| `PATCH` | `/vagas/{id}/desbloqueio` | desbloqueia a vaga |
-| `DELETE` | `/vagas/{id}` | inativa uma vaga |
+| Método   | Caminho                   | Descrição                      |
+|----------|---------------------------|--------------------------------|
+| `GET`    | `/vagas`                  | lista as vagas ativas          |
+| `GET`    | `/vagas/livres`           | lista as vagas livres          |
+| `GET`    | `/vagas/ocupadas`         | lista as vagas ocupadas        |
+| `GET`    | `/vagas/{id}`             | busca uma vaga                 |
+| `POST`   | `/vagas`                  | cadastra uma vaga              |
+| `PUT`    | `/vagas/{id}`             | atualiza código e tipo         |
+| `PATCH`  | `/vagas/{id}/bloqueio`    | bloqueia a vaga (exige motivo) |
+| `PATCH`  | `/vagas/{id}/desbloqueio` | desbloqueia a vaga             |
+| `DELETE` | `/vagas/{id}`             | inativa uma vaga               |
 
 ### Tarifas — `/tarifas`
 
-| Método | Caminho | Descrição |
-|---|---|---|
-| `GET` | `/tarifas` | histórico de tarifas, da mais recente para a mais antiga |
-| `GET` | `/tarifas/vigente` | tarifa usada nas novas entradas |
-| `GET` | `/tarifas/{id}` | busca uma tarifa (inclusive as antigas) |
-| `POST` | `/tarifas` | cadastra uma tarifa, que substitui a vigente |
+| Método | Caminho            | Descrição                                                |
+|--------|--------------------|----------------------------------------------------------|
+| `GET`  | `/tarifas`         | histórico de tarifas, da mais recente para a mais antiga |
+| `GET`  | `/tarifas/vigente` | tarifa usada nas novas entradas                          |
+| `GET`  | `/tarifas/{id}`    | busca uma tarifa (inclusive as antigas)                  |
+| `POST` | `/tarifas`         | cadastra uma tarifa, que substitui a vigente             |
+
+### Tickets — `/tickets`
+
+| Método  | Caminho                        | Descrição                                                                |
+|---------|--------------------------------|--------------------------------------------------------------------------|
+| `POST`  | `/tickets/entrada`             | registra a entrada do veículo (placa e vaga) e gera o ticket com QR Code |
+| `GET`   | `/tickets/abertos`             | lista os tickets em aberto                                               |
+| `GET`   | `/tickets/{qrCodeToken}`       | consulta um ticket pelo QR Code                                          |
+| `GET`   | `/tickets/{qrCodeToken}/valor` | valor a pagar no momento                                                 |
+| `PATCH` | `/tickets/{qrCodeToken}/saida` | libera a saída (somente após o pagamento)                                |
 
 ### Exemplo de requisição
 
@@ -251,12 +262,12 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 }
 ```
 
-| Status | Quando ocorre |
-|---|---|
-| `400 Bad Request` | dados inválidos ou JSON malformado (com a lista de campos inválidos) |
-| `404 Not Found` | recurso não encontrado |
-| `409 Conflict` | placa já cadastrada |
-| `422 Unprocessable Entity` | regra de negócio violada |
+| Status                     | Quando ocorre                                                        |
+|----------------------------|----------------------------------------------------------------------|
+| `400 Bad Request`          | dados inválidos ou JSON malformado (com a lista de campos inválidos) |
+| `404 Not Found`            | recurso não encontrado                                               |
+| `409 Conflict`             | placa já cadastrada                                                  |
+| `422 Unprocessable Entity` | regra de negócio violada                                             |
 
 ---
 
@@ -275,6 +286,7 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 
 ## 👩‍💻 Autoria
 
-Desenvolvido por **Laíssa Victória Barros** ([@vic-barros](https://github.com/vic-barros)) como atividade da disciplina **Programação I** — IFS.
+Desenvolvido por **Laíssa Victória Barros** ([@vic-barros](https://github.com/vic-barros)) como atividade da disciplina
+**Programação I** — IFS.
 
 Professor: **Glauco Carvalho**
