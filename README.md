@@ -199,6 +199,15 @@ Para acessar o console do H2, use:
 | `PATCH` | `/vagas/{id}/desbloqueio` | desbloqueia a vaga |
 | `DELETE` | `/vagas/{id}` | inativa uma vaga |
 
+### Tarifas — `/tarifas`
+
+| Método | Caminho | Descrição |
+|---|---|---|
+| `GET` | `/tarifas` | histórico de tarifas, da mais recente para a mais antiga |
+| `GET` | `/tarifas/vigente` | tarifa usada nas novas entradas |
+| `GET` | `/tarifas/{id}` | busca uma tarifa (inclusive as antigas) |
+| `POST` | `/tarifas` | cadastra uma tarifa, que substitui a vigente |
+
 ### Exemplo de requisição
 
 ```http
@@ -266,6 +275,6 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 
 ## 👩‍💻 Autoria
 
-Desenvolvido por Laíssa Victória Barros ([@vic-barros](https://github.com/vic-barros)) como atividade da disciplina **Programação I** — IFS.
+Desenvolvido por **Laíssa Victória Barros** ([@vic-barros](https://github.com/vic-barros)) como atividade da disciplina **Programação I** — IFS.
 
 Professor: **Glauco Carvalho**
