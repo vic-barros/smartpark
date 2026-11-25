@@ -219,6 +219,13 @@ Para acessar o console do H2, use:
 | `GET`   | `/tickets/{qrCodeToken}/valor` | valor a pagar no momento                                                 |
 | `PATCH` | `/tickets/{qrCodeToken}/saida` | libera a saída (somente após o pagamento)                                |
 
+### Pagamentos — `/pagamentos`
+
+| Método | Caminho                     | Descrição                                                             |
+|--------|-----------------------------|-----------------------------------------------------------------------|
+| `POST` | `/pagamentos`               | paga o ticket do QR Code informado (o valor é calculado pelo sistema) |
+| `GET`  | `/pagamentos/{qrCodeToken}` | comprovante do pagamento de um ticket                                 |
+
 ### Exemplo de requisição
 
 ```http
@@ -279,7 +286,7 @@ Os erros são tratados de forma centralizada (`@RestControllerAdvice`) e devolvi
 - [x] Tratamento centralizado de erros
 - [x] Services com as regras de negócio
 - [x] Controllers de Veículo, Tipo de Vaga e Vaga
-- [ ] Controllers de Tarifa, Ticket e Pagamento
+- [x] Controllers de Tarifa, Ticket e Pagamento
 - [ ] Geração da imagem do QR Code
 
 ---
