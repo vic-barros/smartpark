@@ -1,5 +1,7 @@
 package br.com.smartpark.estacionamento.exception;
 
+import br.com.smartpark.estacionamento.enums.TipoVeiculo;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,9 +59,21 @@ public class TratadorDeErros {
     public ResponseEntity<StandardError> jsonInvalido(
             HttpMessageNotReadableException ex,
             HttpServletRequest request) {
-        return resposta(HttpStatus.BAD_REQUEST, "Erro de leitura JSON",
-                "Verifique o formato dos dados enviados. "
-                + "tipo aceita CARRO, MOTO ou UTILITARIO.", request);
+
+        String mensagem = "Verifique a sintaxe e os dados do JSON enviado.";
+        Throwable causa = ex;
+
+        while (causa != null) {
+            if (causa instanceof InvalidFormatException erro
+                    && erro.getTargetType() == TipoVeiculo.class) {
+                mensagem = "Tipo de veículo inválido. "
+                        + "Valores permitidos: CARRO, MOTO, CAMINHAO e ONIBUS.";
+                break;
+            }
+            causa = causa.getCause();
+        }
+
+        return resposta(HttpStatus.BAD_REQUEST, "Erro de leitura JSON", mensagem, request);
     }
 
     private ResponseEntity<StandardError> resposta(

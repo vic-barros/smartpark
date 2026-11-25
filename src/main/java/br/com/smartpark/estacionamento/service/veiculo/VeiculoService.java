@@ -22,7 +22,7 @@ public class VeiculoService {
     @Transactional
     public VeiculoResponseDto cadastrar(VeiculoRequestDto req) {
         if (veiculoRepository.existsByPlaca(req.placa()))
-            throw new PlacaJaCadastradaException(" já cadastrada", req.placa());
+            throw new PlacaJaCadastradaException(req.placa());
 
         Veiculo salvo = veiculoRepository.save(req.paraModel());
         return VeiculoResponseDto.de(salvo);
